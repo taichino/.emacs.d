@@ -24,6 +24,7 @@
       (split-window-horizontally))
     (switch-to-buffer-other-window other-buf)
     (other-window -1)))
+(global-set-key "\C-cwt" 'window-toggle-division)
 
 ;; 画面切替
 (defun swap-screen()
@@ -41,8 +42,8 @@
     (other-window 1)
     (set-window-buffer thiswin (window-buffer))
     (set-window-buffer (selected-window) thisbuf)))
-(global-set-key "\C-xwt" 'swap-screen)
-(global-set-key "\C-xwT" 'swap-screen-with-cursor)
+(global-set-key "\C-cws" 'swap-screen)
+(global-set-key "\C-cwS" 'swap-screen-with-cursor)
 
 ;;; フレームサイズをトグルで切り替え
 (setq my-frame-max-flag nil)
@@ -67,6 +68,9 @@
       (set-frame-width (selected-frame) 171)
       (message "to MAX.") (sit-for 2)
     )))
+
+;; バッファ移動にShift+カーソルを使えるようにする
+(windmove-default-keybindings)
 
 ;; elscreen
 (setq elscreen-prefix-key "\C-t")

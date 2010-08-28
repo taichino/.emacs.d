@@ -18,11 +18,11 @@
 ;; 基本設定
 (load "init/base.el")
 
+;; 表示、window関連の設定
+(load "init/display.el")
+
 ;; global-set-key
 (load "init/keybind.el")
-
-;; 表示設定
-(load "init/display.el")
 
 ;; howm/org
 (load "init/memo.el")

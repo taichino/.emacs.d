@@ -10,6 +10,8 @@
 (global-set-key "\M-N" 'next-error)
 (global-set-key "\M-P" 'previous-error)
 (global-set-key "\M-r" 'replace-string)
+(global-set-key "\C-cso" 'occur-by-moccur)
+(global-set-key "\C-z" nil) 
 
 ;; 対応する括弧へjump
 (progn
