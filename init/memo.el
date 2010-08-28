@@ -1,3 +1,26 @@
+;; org-mode
+(require 'org)
+(add-hook 'org-mode-hook 'howm-mode)
+(add-to-list 'auto-mode-alist '("\\.howm$" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(setq howm-view-title-header "*")
+(setq howm-prefix "\C-z")
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(defun org-insert-upheading (arg)
+  (interactive "P")
+  (org-insert-heading arg)
+  (cond ((org-on-heading-p) (org-do-promote))
+	((org-at-item-p) (org-indent-item -1))))
+(defun org-insert-heading-dwim (arg)
+  (interactive "p")
+  (case arg
+    (4  (org-insert-subheading nil))
+    (16 (org-insert-upheading  nil))
+    (t  (org-insert-heading nil))))
+(define-key org-mode-map (kbd "<C-return>") 'org-insert-heading-dwim)
+
 ;; howm
 (setq howm-menu-lang 'ja)
 (global-set-key "\C-c,," 'howm-menu)
@@ -47,22 +70,3 @@
   '(progn
      (define-key howm-mode-map
        "\C-c\C-c" 'my-save-and-kill-buffer)))
-
-;; org-mode
-(require 'org)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
-(defun org-insert-upheading (arg)
-  (interactive "P")
-  (org-insert-heading arg)
-  (cond ((org-on-heading-p) (org-do-promote))
-	((org-at-item-p) (org-indent-item -1))))
-(defun org-insert-heading-dwim (arg)
-  (interactive "p")
-  (case arg
-    (4  (org-insert-subheading nil))
-    (16 (org-insert-upheading  nil))
-    (t  (org-insert-heading nil))))
-(define-key org-mode-map (kbd "<C-return>") 'org-insert-heading-dwim)

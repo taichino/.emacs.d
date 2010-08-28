@@ -15,10 +15,20 @@
 (auto-install-update-emacswiki-package-name t)
 (auto-install-compatibility-setup)
 
-;; 初期化ファイルはinitディレクトリ下のファイル群
+;; 基本設定
 (load "init/base.el")
+
+;; global-set-key
 (load "init/keybind.el")
+
+;; 表示設定
 (load "init/display.el")
+
+;; howm/org
 (load "init/memo.el")
+
+;; 各種プログラミング用メジャーモード
 (load "init/programming.el")
+
+;; 自分で追加した関数など
 (load "init/self.el")

@@ -37,7 +37,6 @@
 (require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
-
 ;; emacsclient
 (server-start)
 (global-set-key (kbd "C-x C-c") 'server-edit)
@@ -131,4 +130,3 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/yasnippet")
 (require 'yasnippet-config)
 (yas/setup "~/.emacs.d/lisp/yasnippet")
-
