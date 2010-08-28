@@ -15,9 +15,9 @@
 (auto-install-compatibility-setup)
 
 ;; color theme
-;;(require 'color-theme)
-;;(color-theme-initialize)
-;;(color-theme-arjen)
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-arjen)
 
 ;; キーバインド
 (setq ns-command-modifier (quote meta))
@@ -125,7 +125,7 @@
 
 ;; migemo
 ;; (setq-default case-fold-search nil)
-;; (load "migemo.el")
+;; (require 'migemo)
 ;; (setq migemo-use-pattern-alist t)
 ;; (setq migemo-use-frequent-pattern-alist t)
 
