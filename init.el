@@ -57,9 +57,9 @@
       'text-translator-translate-by-auto-selection-enja)
 
 ;; yasnippets
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet")
 (require 'yasnippet-config)
-(yas/setup "~/.emacs.d/plugins/yasnippet")
+(yas/setup "~/.emacs.d/lisp/yasnippet")
 
 ;; 履歴を保存する
 (savehist-mode t)
@@ -411,6 +411,6 @@
 
 
 ;; git
-(add-to-list 'load-path "~/.emacs.d/plugins/magit/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp/magit/share/emacs/site-lisp")
 (require 'magit)
-;;(require 'egg)
+
