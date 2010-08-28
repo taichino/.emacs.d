@@ -19,6 +19,11 @@
 (color-theme-initialize)
 (color-theme-arjen)
 
+;; 文字コード
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8-unix)
+(setq default-buffer-file-coding-system 'utf-8)
+
 ;; キーバインド
 (setq ns-command-modifier (quote meta))
 (setq ns-alternate-modifier (quote super))
@@ -38,6 +43,9 @@
 
 ;; grep-edit
 (require 'grep-edit)
+
+;; スタートページは表示しない
+(setq inhibit-startup-message t)
 
 ;; shell
 (require 'shell-history)
@@ -123,34 +131,11 @@
 ;; yes/noの代わりにy/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; migemo
-;; (setq-default case-fold-search nil)
-;; (require 'migemo)
-;; (setq migemo-use-pattern-alist t)
-;; (setq migemo-use-frequent-pattern-alist t)
-
-(when (eq system-type 'darwin)
-  (setq my-font "-*-*-medium-r-normal--12-*-*-*-*-*-fontset-osaka")
-;;  (setq fixed-width-use-QuickDraw-for-ascii t)
-  (setq mac-allow-anti-aliasing t)
-  (if (= emacs-major-version 22)
-      (require 'carbon-font))
-  (set-default-font my-font)
-  (add-to-list 'default-frame-alist `(font . ,my-font))
-  (when (= emacs-major-version 23)
-    (set-fontset-font
-     (frame-parameter nil 'font)
-     'japanese-jisx0208
-     '("osaka" . "iso10646-1"))
-    (setq face-font-rescale-alist
-	  '(("^-apple-hiragino.*" . 1.2)
-	    (".*osaka-bold.*" . 1.2)
-  	    (".*osaka-medium.*" . 1.2)
-  	    (".*courier-bold-.*-mac-roman" . 1.0)
-  	    (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
-  	    (".*monaco-bold-.*-mac-roman" . 0.9)
-  	    ("-cdac$" . 1.3)))))
-
+;; font
+(add-to-list 'default-frame-alist '(font . "fontset-default"))
+(set-face-attribute 'default nil
+                    :family "monaco"
+                    :height 100)
 ;; emacsclient
 (server-start)
 (global-set-key (kbd "C-x C-c") 'server-edit)
@@ -203,6 +188,31 @@
     (set-window-buffer (selected-window) thisbuf)))
 (global-set-key "\C-xwt" 'swap-screen)
 (global-set-key "\C-xwT" 'swap-screen-with-cursor)
+
+;;; フレームサイズをトグルで切り替え
+(setq my-frame-max-flag nil)
+(defun my-toggle-frame-size ()
+  (interactive)
+  (if my-frame-max-flag
+      (progn
+        (setq my-frame-max-flag nil)
+        (if (functionp 'w32-restore-frame)
+            (w32-restore-frame)
+          (set-frame-configuration my-last-frame-conf)
+          (message "not MAX.") (sit-for 2)
+          ))
+    (setq my-frame-max-flag t)
+    (if (functionp 'w32-maximize-frame)
+        (w32-maximize-frame)
+      (setq my-last-frame-conf (current-frame-configuration))
+      (set-frame-position (selected-frame) 0 0)
+      ;; フレーム最大化時に (frame-height) で得た値
+      (set-frame-height (selected-frame) 59)
+      ;; フレーム最大化時に (frame-width) で得た値
+      (set-frame-width (selected-frame) 171)
+      (message "to MAX.") (sit-for 2)
+    )))
+
 
 ;; カーソルを元の位置へ
 (require 'point-undo)
