@@ -396,7 +396,7 @@
 	(setq indent-tabs-mode nil)
 	(setq indent-level 2)
 	(setq py-indent-offset 2)
-;;	(setq ipython-command "/opt/local/bin/ipython2.5")
+	(setq ipython-command "/usr/local/bin/ipython")
 	(require 'ipython)))
 
 
