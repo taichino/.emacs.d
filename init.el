@@ -1,7 +1,12 @@
 ;; ロードパス
 (add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp/apel")
+(add-to-list 'load-path "~/.emacs.d/lisp/emu")
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/w3m")
+;; 実行パス
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/opt/local/bin")
 
 ;; auto-install
 (require 'auto-install)
@@ -10,11 +15,13 @@
 (auto-install-compatibility-setup)
 
 ;; color theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-arjen)
+;;(require 'color-theme)
+;;(color-theme-initialize)
+;;(color-theme-arjen)
 
 ;; キーバインド
+(setq ns-command-modifier (quote meta))
+(setq ns-alternate-modifier (quote super))
 (keyboard-translate ?\C-h ?\C-?)
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\C-cg" 'grep)
@@ -40,6 +47,9 @@
 
 ;; summarye.el
 (require 'summarye)
+
+;; 音を消す
+(setq ring-bell-function 'ignore)
 
 ;; 翻訳
 (require 'text-translator)
@@ -114,27 +124,32 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; migemo
-(setq-default case-fold-search nil)
-(load "migemo.el")
-(setq migemo-use-pattern-alist t)
-(setq migemo-use-frequent-pattern-alist t)
+;; (setq-default case-fold-search nil)
+;; (load "migemo.el")
+;; (setq migemo-use-pattern-alist t)
+;; (setq migemo-use-frequent-pattern-alist t)
 
-;; font
-(require 'carbon-font)
-(if (eq window-system 'mac) (require 'carbon-font))
-(fixed-width-set-fontset "osaka" 10)
-
-(defun font-size(size)
-  (fixed-width-set-fontset "osaka" size))
-(defun font-small()
-  (interactive)
-  (font-size 10))
-(defun font-normal()
-  (interactive)
-  (font-size 12))
-(defun font-big()
-  (interactive)
-  (font-size 18))
+(when (eq system-type 'darwin)
+  (setq my-font "-*-*-medium-r-normal--12-*-*-*-*-*-fontset-osaka")
+;;  (setq fixed-width-use-QuickDraw-for-ascii t)
+  (setq mac-allow-anti-aliasing t)
+  (if (= emacs-major-version 22)
+      (require 'carbon-font))
+  (set-default-font my-font)
+  (add-to-list 'default-frame-alist `(font . ,my-font))
+  (when (= emacs-major-version 23)
+    (set-fontset-font
+     (frame-parameter nil 'font)
+     'japanese-jisx0208
+     '("osaka" . "iso10646-1"))
+    (setq face-font-rescale-alist
+	  '(("^-apple-hiragino.*" . 1.2)
+	    (".*osaka-bold.*" . 1.2)
+  	    (".*osaka-medium.*" . 1.2)
+  	    (".*courier-bold-.*-mac-roman" . 1.0)
+  	    (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
+  	    (".*monaco-bold-.*-mac-roman" . 0.9)
+  	    ("-cdac$" . 1.3)))))
 
 ;; emacsclient
 (server-start)
@@ -367,11 +382,6 @@
              ))
 
 ;;
-;; for w3m
-;;
-(require 'w3m-load)
-
-;;
 ;; for ruby
 ;;
 (autoload 'ruby-mode "ruby-mode"
@@ -400,6 +410,7 @@
 	(require 'ipython)))
 
 
-;; magit
+;; git
 (add-to-list 'load-path "~/.emacs.d/plugins/magit/share/emacs/site-lisp")
 (require 'magit)
+;;(require 'egg)
