@@ -6,8 +6,7 @@
 def ${1:name}($2):
     """$3
     ${2:$
-      (let* 
-        ((indent
+    (let* ((indent
             (concat "\n" (make-string (current-column) 32)))
            (args
             (mapconcat
