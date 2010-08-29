@@ -1,0 +1,6 @@
+#name : begin
+#group : general
+# --
+#!/usr/bin/ruby -Ku
+$KCODE="u"
+

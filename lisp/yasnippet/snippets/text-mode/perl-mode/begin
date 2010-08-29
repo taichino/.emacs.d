@@ -1,0 +1,8 @@
+#name : begin 
+# --
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use utf8; binmode STDOUT, ':utf8';
+use Perl6::Say;
