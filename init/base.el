@@ -1,5 +1,5 @@
 ;; 文字コード
-(set-language-environment "Japanese")
+;;(set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)
 
@@ -37,11 +37,6 @@
 (require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
 
-;; emacsclient
-(server-start)
-(global-set-key (kbd "C-x C-c") 'server-edit)
-(defalias 'exit 'save-buffers-kill-emacs)
-
 ;; sequential-command
 (require 'sequential-command-config)
 (sequential-command-setup-keys)
@@ -76,13 +71,13 @@
 (global-set-key "\M--" 'point-undo)
 
 ;; migemo
-(setq migemo-command "migemo")
-(setq migemo-options '("-t" "emacs"))
-(setq migemo-dictionary (expand-file-name "~/.emacs.d/share/migemo/migemo-dict"))
-(setq migemo-user-dictionary nil)
-(setq migemo-regex-dictionary nil)
-(setenv "RUBYLIB" "~/.emacs.d/lib/ruby/site_ruby/")
-(require 'migemo)
+;;(setq migemo-command "migemo")
+;;(setq migemo-options '("-t" "emacs"))
+;;(setq migemo-dictionary (expand-file-name "~/.emacs.d/share/migemo/migemo-dict"))
+;;(setq migemo-user-dictionary nil)
+;;(setq migemo-regex-dictionary nil)
+;;(setenv "RUBYLIB" "~/.emacs.d/lib/ruby/site_ruby/")
+;;(require 'migemo)
 
 ;; anything
 (require 'anything-startup)
@@ -103,13 +98,6 @@
              (gtags-make-complete-list)
              ))
 
-;; git
-(add-to-list 'load-path "~/.emacs.d/lisp/magit/share/emacs/site-lisp")
-(require 'magit)
-
-;; twitter
-(require 'twittering-mode)
-
 ;; view mode
 (require 'viewer)
 (setq view-read-only t)
@@ -119,11 +107,6 @@
 ;; auto-complete
 (require 'auto-complete-config)
 (global-auto-complete-mode 1)
-
-;; 翻訳
-(require 'text-translator)
-(setq text-translator-auto-selection-func
-      'text-translator-translate-by-auto-selection-enja)
 
 ;; yasnippets
 (add-to-list 'load-path "~/.emacs.d/lisp/yasnippet")

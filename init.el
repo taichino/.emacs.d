@@ -7,7 +7,6 @@
 
 ;; 実行パス
 (add-to-list 'exec-path "/usr/local/bin")
-(add-to-list 'exec-path "/opt/local/bin")
 
 ;; auto-install
 (require 'auto-install)

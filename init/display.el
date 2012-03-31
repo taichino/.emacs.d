@@ -3,12 +3,6 @@
 (color-theme-initialize)
 (color-theme-arjen)
 
-;; font
-(add-to-list 'default-frame-alist '(font . "fontset-default"))
-(set-face-attribute 'default nil
-                    :family "monaco"
-                    :height 120)
-
 ;; windowのtoggle
 (defun window-toggle-division ()
   "ウィンドウ 2 分割時に、縦分割<->横分割"
