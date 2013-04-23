@@ -1,4 +1,7 @@
 ;; objc-mode
+(setq ff-search-directories '("./" "../*" "../../*"))
+(add-to-list 'auto-mode-alist '("\\.mm?$" . objc-mode))
+(add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@implementation" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@interface" . objc-mode))
 (add-to-list 'magic-mode-alist '("\\(.\\|\n\\)*\n@protocol" . objc-mode))
@@ -21,8 +24,12 @@
 
        ("\\.hpp$" (".cpp" ".c"))))
 (add-hook 'objc-mode-hook
-         (lambda ()
-           (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)))
+		  (lambda ()
+			(c-set-style "cc-mode")
+			(setq c-indent-level 4)
+			(setq c-tab-width 4)
+			(setq tab-width 4)
+			(define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)))
 
 
 ;; as-mode
@@ -95,7 +102,68 @@
 (add-hook 'python-mode-hook
  '(lambda()
 	(setq indent-tabs-mode nil)
-	(setq indent-level 2)
-	(setq py-indent-offset 2)
+	(setq indent-level 4)
+	(setq py-indent-offset 4)
 	(setq ipython-command "/usr/local/bin/ipython")
 	(require 'ipython)))
+
+;; c++
+(add-hook 'c++-mode-hook
+		  '(lambda()	
+			 (setq indent-tabs-mode nil)
+			 (c-set-style "cc-mode")
+			 (setq c-indent-level 4)
+			 (setq c-tab-width 4)
+			 (setq tab-width 4)
+			 (setq c-basic-offset tab-width)))
+(add-hook 'c-mode-hook
+		  '(lambda()	
+			 (setq indent-tabs-mode nil)
+			 (c-set-style "cc-mode")
+			 (setq c-indent-level 4)
+			 (setq c-tab-width 4)
+			 (setq tab-width 4)
+			 (setq c-basic-offset tab-width)))
+
+
+;; prolog
+(add-hook 'prolog-mode-hook
+ '(lambda()
+	(setq indent-tabs-mode nil)
+	(setq indent-level 4)))
+(setq auto-mode-alist
+      (append '(("\.plg$". prolog-mode))
+	      auto-mode-alist))
+
+;; less-css
+(setq auto-mode-alist
+      (append '(("\.less$". css-mode))
+	      auto-mode-alist))
+
+;; js
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js2-mode-hook
+          '(lambda()
+            (hs-minor-mode 1)))
+
+;; coffee-script
+(autoload 'coffee-mode "coffee-mode" "Major mode for editing CoffeeScript." t)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+;; markdown
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+;; action script
+(require 'actionscript-mode)
+(setq auto-mode-alist
+      (append '(("\\.as$" . actionscript-mode))
+              auto-mode-alist))
+
+
+;; コードの折りたたみ
+(define-key global-map (kbd "C-\\") 'hs-toggle-hiding) 

@@ -36,6 +36,9 @@
 ;; diredでの編集機能を追加
 (require 'wdired)
 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+;; デフォルトのタブ幅
+(setq-default tab-width 4)
+(setq default-tab-width 4)
 
 ;; sequential-command
 (require 'sequential-command-config)
