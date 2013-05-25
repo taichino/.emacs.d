@@ -38,10 +38,6 @@
       (append '(("\\.applescript$" . applescript-mode))
               auto-mode-alist))
 
-;; elisp mode
-(require 'auto-async-byte-compile)
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
-
 ;; apple script
 (autoload 'applescript-mode "applescript-mode")
 (setq auto-mode-alist
