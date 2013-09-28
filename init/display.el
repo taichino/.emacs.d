@@ -1,7 +1,8 @@
 ;; color theme
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-arjen)
+(load-theme 'wombat t)
+
 
 ;; windowのtoggle
 (defun window-toggle-division ()

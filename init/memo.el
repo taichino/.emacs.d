@@ -1,6 +1,7 @@
 (add-to-list 'auto-mode-alist '("\\.howm$" . howm-mode))
 (setq howm-view-title-header "*")
 (setq howm-prefix "\C-z")
+(setq howm-directory "~/howm")
 
 ;; howm
 (setq howm-menu-lang 'ja)

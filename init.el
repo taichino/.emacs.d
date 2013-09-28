@@ -1,12 +1,8 @@
-;; ロードパス
 (add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/.emacs.d/lisp/apel")
-(add-to-list 'load-path "~/.emacs.d/lisp/emu")
-(add-to-list 'load-path "~/.emacs.d/lisp/howm")
-
-;; 実行パス
-(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'load-path "~/.emacs.d/lib/lisp")
+(add-to-list 'load-path "~/.emacs.d/lib/lisp/apel")
+(add-to-list 'load-path "~/.emacs.d/lib/lisp/emu")
+(add-to-list 'load-path "~/.emacs.d/lib/lisp/howm")
 
 ;; auto-install
 (require 'auto-install)
@@ -14,20 +10,22 @@
 (auto-install-update-emacswiki-package-name t)
 (auto-install-compatibility-setup)
 
-;; 基本設定
 (load "init/base.el")
-
-;; 表示、window関連の設定
 (load "init/display.el")
-
-;; global-set-key
 (load "init/keybind.el")
-
-;; howm/org
 (load "init/memo.el")
-
-;; 各種プログラミング用メジャーモード
 (load "init/programming.el")
-
-;; 自分で追加した関数など
 (load "init/self.el")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (wombat))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -135,6 +135,16 @@
       (append '(("\.plg$". prolog-mode))
 	      auto-mode-alist))
 
+;; cmake
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists.txt". cmake-mode))
+	      auto-mode-alist))
+(setq auto-mode-alist
+      (append '(("\.cmake$". cmake-mode))
+	      auto-mode-alist))
+
+
 ;; less-css
 (setq auto-mode-alist
       (append '(("\.less$". css-mode))

@@ -1,5 +1,3 @@
-;; 文字コード
-;;(set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)
 
@@ -44,17 +42,11 @@
 (require 'sequential-command-config)
 (sequential-command-setup-keys)
 
-;; grep-edit
-(require 'grep-edit)
-
 ;; shell
 (require 'shell-history)
 (require 'eshell)
 (setq eshell-save-history-on-exit nil)
 (setq eshell-history-file-name "~/.zsh_history")
-
-;; summarye.el
-(require 'summarye)
 
 ;; バッファの扱い
 (ffap-bindings)
@@ -64,54 +56,7 @@
 (setq recentf-max-saved-items 500)
 (require 'recentf-ext)
 
-;; color-moccur
-(require 'color-moccur)
-(require 'moccur-edit)
-(setq moccur-split-word t)
-
-;; カーソルを元の位置へ
-(require 'point-undo)
-(global-set-key "\M--" 'point-undo)
-
-;; migemo
-;;(setq migemo-command "migemo")
-;;(setq migemo-options '("-t" "emacs"))
-;;(setq migemo-dictionary (expand-file-name "~/.emacs.d/share/migemo/migemo-dict"))
-;;(setq migemo-user-dictionary nil)
-;;(setq migemo-regex-dictionary nil)
-;;(setenv "RUBYLIB" "~/.emacs.d/lib/ruby/site_ruby/")
-;;(require 'migemo)
-
-;; anything
-(require 'anything-startup)
-(anything-complete-shell-history-setup-key (kbd "C-o"))
-
-;; gnu global
-(autoload 'gtags-mode "gtags" "" t)
-(setq gtags-mode-hook
-      '(lambda ()
-         (local-set-key "\M-t" 'gtags-find-tag)
-         (local-set-key "\M-r" 'gtags-find-rtag)
-         (local-set-key "\M-s" 'gtags-find-symbol)
-         (local-set-key "\C-t" 'gtags-pop-stack)
-         ))
-(add-hook 'c-mode-common-hook
-          '(lambda()
-             (gtags-mode 1)
-             (gtags-make-complete-list)
-             ))
-
-;; view mode
-(require 'viewer)
-(setq view-read-only t)
-(setq viewer-modeline-color-view "orange")
-(viewer-change-modeline-color-setup)
-
-;; auto-complete
-(require 'auto-complete-config)
-(global-auto-complete-mode 1)
-
 ;; yasnippets
-(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/lib/lisp/yasnippet")
 (require 'yasnippet-config)
-(yas/setup "~/.emacs.d/lisp/yasnippet")
+(yas/setup "~/.emacs.d/lib/lisp/yasnippet")
