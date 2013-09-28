@@ -3,6 +3,8 @@
 (color-theme-initialize)
 (load-theme 'deeper-blue t)
 
+(custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
 ;; windowのtoggle
 (defun window-toggle-division ()
   "ウィンドウ 2 分割時に、縦分割<->横分割"
