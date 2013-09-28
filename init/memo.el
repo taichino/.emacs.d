@@ -5,6 +5,7 @@
 
 ;; howm
 (setq howm-menu-lang 'ja)
+(setq howm-directory "~/Documents/howm")
 (global-set-key "\C-c,," 'howm-menu)
 (mapc
  (lambda (f)

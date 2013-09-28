@@ -1,0 +1,14 @@
+#name : begin_cpp
+# --
+TARGET = $1
+SRCS   = $1.cpp
+INC    = 
+LIB    = 
+
+all:$(TARGET)
+$(TARGET):$(SRCS)
+    g++ $(SRCS) -o $(TARGET) -I$(INC) $(LIB)
+run:all
+    ./$(TARGET)
+clean:
+    rm $(TARGET)

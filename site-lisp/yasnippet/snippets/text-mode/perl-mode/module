@@ -1,0 +1,19 @@
+#name : module
+# --
+#!/usr/bin/perl
+
+package $1
+use strict;
+use warnings;
+use Perl6::Say;
+
+sub new {
+    my $class = shift;
+	
+	my $self = bless {
+      # param1 => some_value
+	}, $class;
+	return $self;
+}
+
+1;

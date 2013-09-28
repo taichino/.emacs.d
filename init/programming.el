@@ -1,3 +1,12 @@
+;; magit
+(package-activate 'magit '(1 1 1))
+(eval-after-load 'magit
+  '(progn
+     (set-face-background 'magit-item-highlight "#202020")
+     (set-face-foreground 'magit-diff-add "#40ff40")
+     (set-face-foreground 'magit-diff-del "#ff4040")
+     (set-face-foreground 'magit-diff-file-header "#4040ff")))
+
 ;; objc-mode
 (setq ff-search-directories '("./" "../*" "../../*"))
 (add-to-list 'auto-mode-alist '("\\.mm?$" . objc-mode))
@@ -37,10 +46,6 @@
 (setq auto-mode-alist
       (append '(("\\.applescript$" . applescript-mode))
               auto-mode-alist))
-
-;; elisp mode
-(require 'auto-async-byte-compile)
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 ;; apple script
 (autoload 'applescript-mode "applescript-mode")

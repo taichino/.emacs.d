@@ -1,3 +1,4 @@
+;; (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)
 
@@ -38,16 +39,6 @@
 (setq-default tab-width 4)
 (setq default-tab-width 4)
 
-;; sequential-command
-(require 'sequential-command-config)
-(sequential-command-setup-keys)
-
-;; shell
-(require 'shell-history)
-(require 'eshell)
-(setq eshell-save-history-on-exit nil)
-(setq eshell-history-file-name "~/.zsh_history")
-
 ;; バッファの扱い
 (ffap-bindings)
 (require 'uniquify)
@@ -58,5 +49,6 @@
 
 ;; yasnippets
 (add-to-list 'load-path "~/.emacs.d/lib/lisp/yasnippet")
-(require 'yasnippet-config)
-(yas/setup "~/.emacs.d/lib/lisp/yasnippet")
+(require 'yasnippet)
+(yas/load-directory "~/.emacs.d/lib/lisp/yasnippet")
+

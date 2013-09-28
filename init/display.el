@@ -1,8 +1,15 @@
 ;; color theme
+<<<<<<< HEAD
 (require 'color-theme)
 (color-theme-initialize)
 (load-theme 'wombat t)
 
+=======
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-arjen)
+(load-theme 'deeper-blue t)
+>>>>>>> 290d60cd80fceb562ad1b0f908360cf899479e6a
 
 ;; windowのtoggle
 (defun window-toggle-division ()
