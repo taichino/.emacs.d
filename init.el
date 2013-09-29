@@ -4,13 +4,6 @@
 (add-to-list 'load-path "~/.emacs.d/lib/lisp/emu")
 (add-to-list 'load-path "~/.emacs.d/lib/lisp/howm")
 
-;; auto-install
-(require 'auto-install)
-(add-to-list 'load-path auto-install-directory)
-(auto-install-update-emacswiki-package-name t)
-(auto-install-compatibility-setup)
-
-;; パッケージ
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
