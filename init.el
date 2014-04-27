@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/lib/lisp/apel")
 (add-to-list 'load-path "~/.emacs.d/lib/lisp/emu")
 (add-to-list 'load-path "~/.emacs.d/lib/lisp/howm")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/ess/lisp")
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)

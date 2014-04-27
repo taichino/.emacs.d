@@ -89,19 +89,13 @@
 (mmm-add-mode-ext-class 'html-mode nil 'mmm-django-mode)
 
 ;; ruby
-(autoload 'ruby-mode "ruby-mode"
-  "Mode for editing ruby source files" t)
-(setq auto-mode-alist
-      (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
-(setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
-                                     interpreter-mode-alist))
-(autoload 'run-ruby "inf-ruby"
-  "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby"
-  "Set local key defs for inf-ruby in ruby-mode")
+(autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-hook 'ruby-mode-hook
-          '(lambda ()
-            (inf-ruby-keys)))
+          (lambda ()
+            (define-key ruby-mode-map "{" nil)
+            (define-key ruby-mode-map "}" nil)))
 
 ;; python
 (add-hook 'python-mode-hook
@@ -182,3 +176,6 @@
 
 ;; コードの折りたたみ
 (define-key global-map (kbd "C-\\") 'hs-toggle-hiding) 
+
+;; R script
+(load "ess-site")
