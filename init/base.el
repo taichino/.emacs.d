@@ -1,3 +1,4 @@
+
 ;; (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8-unix)
 (setq default-buffer-file-coding-system 'utf-8)
@@ -44,15 +45,5 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
-(setq recentf-max-saved-items 500)
-(require 'recentf-ext)
 
-;; yasnippets
-(add-to-list 'load-path "~/.emacs.d/lib/lisp/yasnippet")
-(require 'yasnippet)
-(yas/load-directory "~/.emacs.d/lib/lisp/yasnippet")
-
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)

@@ -30,5 +30,3 @@
 (load "init/keybind.el")
 (load "init/memo.el")
 (load "init/programming.el")
-(load "init/self.el")
-
