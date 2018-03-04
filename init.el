@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/inits")
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -25,8 +25,8 @@
 ;; 実行パス
 (add-to-list 'exec-path "/usr/local/bin")
 
-(load "init/base.el")
-(load "init/display.el")
-(load "init/keybind.el")
-(load "init/memo.el")
-(load "init/programming.el")
+(load "base.el")
+(load "display.el")
+(load "keybind.el")
+(load "memo.el")
+(load "programming.el")
