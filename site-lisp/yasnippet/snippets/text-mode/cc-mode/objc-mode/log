@@ -1,3 +1,0 @@
-#name : log
-# --
-NSLog($0);

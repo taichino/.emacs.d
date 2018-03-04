@@ -1,7 +1,0 @@
-#name : swf
-# --
-<object data="${1:url of swf file}"
-        type="application/x-shockwave-flash"
-        width="$2" height="$3">
-  <param name="movie" value="$1" />
-</object>
