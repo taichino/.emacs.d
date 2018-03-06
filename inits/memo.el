@@ -4,7 +4,6 @@
   :bind* ("C-c , ," . howm-menu)
   :config
  
-  ;; howm のメモを置くディレクトリ
   (setq howm-directory "~/Dropbox/howm")
 
   (setq howm-menu-lang 'en)
