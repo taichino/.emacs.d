@@ -76,3 +76,7 @@
 			 (setq c-tab-width 4)
 			 (setq tab-width 4)
 			 (setq c-basic-offset tab-width)))
+
+;; swift
+(use-package swift-mode
+  :ensure t)
