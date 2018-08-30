@@ -77,6 +77,19 @@
 			 (setq tab-width 4)
 			 (setq c-basic-offset tab-width)))
 
-;; swift
+;; Swift
 (use-package swift-mode
   :ensure t)
+
+;; Go
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/"))
+(add-to-list 'exec-path (expand-file-name "~/dev/go/bin/"))
+
+(add-hook 'go-mode-hook 'flycheck-mode)
+(add-hook 'go-mode-hook (lambda()
+       (add-hook 'before-save-hook 'gofmt-before-save)
+       (local-set-key (kbd "M-.") 'godef-jump)
+       (set (make-local-variable 'company-backends) '(company-go))
+       (setq indent-tabs-mode nil)    ; タブを利用
+       (setq c-basic-offset 4)    ; tabサイズを4にする
+       (setq tab-width 4)))

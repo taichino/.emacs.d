@@ -27,7 +27,7 @@
  '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
  '(package-selected-packages
    (quote
-	(swift-mode color-theme color-theme-sanityinc-tomorrow use-package))))
+	(company-go go-mode swift-mode color-theme color-theme-sanityinc-tomorrow use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
