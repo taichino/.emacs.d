@@ -1,4 +1,5 @@
 (use-package color-theme-sanityinc-tomorrow
+  :ensure t
   :config
   (setf custom-safe-themes t)
   (color-theme-sanityinc-tomorrow-night)
